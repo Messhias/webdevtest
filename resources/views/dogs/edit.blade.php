@@ -49,7 +49,7 @@
                                 Form::label('cbkc',' Número de registro na CBKC (obrigatório)')
                             }}
                             {{
-                                Form::text('cbkc',$dog->cbkc,[
+                                Form::text('cbkc',$dog->CBKC,[
                                     'class'=>'form-control',
                                     'placeholder'=>' Número de registro na CBKC (obrigatório)'
                                 ])
@@ -135,7 +135,7 @@
                         
                         <div class='form-group'>
                             {{
-                                Form::label('onwer-email','Email do proprietário (obrigatório)')
+                                Form::label('owner-email','Email do proprietário (obrigatório)')
                             }}
                             {{
                                 Form::email('owner-email',$dog->owner[ 0 ]->email,[
