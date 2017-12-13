@@ -44,7 +44,7 @@ return [
             'host' => env('DB_HOST', 'mysql04-farm70.uni5.net'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'sistemacadastr'),
-            'username' => env('DB_USERNAME', 'sistemacadastr'),
+            'username' => env('DB_USERNAME', 'sistemacad_add1'),
             'password' => env('DB_PASSWORD', '4jIqTSbj'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
