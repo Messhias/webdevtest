@@ -131,10 +131,10 @@
                         
                         <div class='form-group'>
                             {{
-                                Form::label('onwer-email','Email do proprietário (obrigatório)')
+                                Form::label('owner-email','Email do proprietário (obrigatório)')
                             }}
                             {{
-                                Form::email('onwer-email','',[
+                                Form::email('owner-email','',[
                                     'class'=>'form-control',
                                     'placeholder'=>'Email do proprietário (obrigatório)'
                                 ])
