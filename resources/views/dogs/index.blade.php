@@ -31,12 +31,14 @@
                         </a>
                     </div>
 
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-striped table-hover" id ='dogs-table'>
                         <thead>
                             <tr>
                                 <th>Nome</th>
                                 <th>Data de criação</th>
                                 <th>Ações</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -44,12 +46,14 @@
                                 <th>Nome</th>
                                 <th>Data de criação</th>
                                 <th>Ações</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @if ($dogs->count() < 1 )
                                 <tr>
-                                    <td colspan='5'>
+                                    <td colspan='3'>
                                         <center>
                                             NENHUM CÃO ADICIONADO
                                         </center>
@@ -57,7 +61,7 @@
                                 </tr>
                             @endif
 
-                            @foreach($dogs as $key => $dog)
+                            @foreach($dogs->get() as $key => $dog)
                                 <tr>
                                     <td>
                                         {{ $dog->name }}
@@ -65,50 +69,53 @@
                                     <td>
                                         {{ date( 'd/m/Y H:m:s', strtotime(  $dog->created_at ) ) }}
                                     </td>
-                                    <td class='align-center'>
-                                        <div class='col-md-2 col-lg-2'>
-                                            <a
-                                                href=' {{ url( 'editar-cao/'. $dog->id) }} '
-                                                class="btn btn-info btn-circle waves-effect waves-circle waves-float pull-right"
-                                                data-toggle="tooltip"
-                                                data-placement="top"
-                                                title=""
-                                                data-original-title="Editar {{ $dog->name }}"
-                                            >
-                                            Editar
-                                            </a>
-                                        </div>
-                                        <div class='col-md-2 col-lg-2'>
-                                            {{
-                                                Form::open(
-                                                    [
-                                                        'method'    =>  'DELETE',
-                                                        'route'     =>  [ 'deletar-cao', $dog->id ]
-                                                    ]
-                                                )
-                                            }}
-                                                <button 
-                                                    type="submit" 
-                                                    class="btn btn-danger btn-circle waves-effect waves-circle waves-float pull-right"
-                                                    data-toggle="tooltip"
-                                                    data-placement="top"
-                                                    title=""
-                                                    data-original-title="Deletar {{ $dog->name }}"
-                                                >
-                                                    Deletar
-                                                </button>
-                                            {{
-                                                Form::close()
-                                            }}
-                                        </div>
                                     <td>
+                                        <a
+                                            href=' {{ url( 'mostrar-cao/'. $dog->id) }} '
+                                            class="btn btn-primary"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            data-info="{{$dog->id}},{{ $dog->name }}"
+                                            title=""
+                                            data-original-title="Editar {{ $dog->name }}"
+                                        >
+                                            Ver
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a
+                                            href=' {{ url( 'editar-cao/'. $dog->id) }} '
+                                            class="btn btn-info"
+                                        >
+                                        Editar
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {{
+                                            Form::open(
+                                                [
+                                                    'method'    =>  'DELETE',
+                                                    'route'     =>  [ 'deletar-cao', $dog->id ]
+                                                ]
+                                            )
+                                        }}
+                                            <button 
+                                                type="submit" 
+                                                class="btn btn-danger"
+                                            >
+                                                Deletar
+                                            </button>
+                                        {{
+                                            Form::close()
+                                        }}
+                                    </td>
                                 </tr>
                             @endforeach
                             
                         </tbody>
                     </table>
                     
-                    {{ $dogs->links() }}
+                    {{--  {{ $dogs->links() }}  --}}
                       
                 </div>
             </div>

@@ -7,3 +7,11 @@
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+// datatables
+@import "~datatables.net-dt/css/jquery.dataTables";
+
+.dataTables_wrapper{
+    margin-top: 50px;
+}

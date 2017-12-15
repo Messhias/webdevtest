@@ -17,6 +17,40 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+require( './jquery.dataTables' );
+
+
+
 const app = new Vue({
     el: '#app'
 });
+
+
+$(document).ready(function() {
+    $( '#dogs-table' ).DataTable( {
+        "language": {
+            "decimal":        "",
+            "emptyTable":     "NENHUM DADO ENCONTRADO",
+            "info":           "Mostrando _START_ à _END_ de _TOTAL_ linhas",
+            "infoEmpty":      "Mostrando 0 à 0 de 0 dados",
+            "infoFiltered":   "(Filtrado de _MAX_ total de dados)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "Mostrando _MENU_ dados",
+            "loadingRecords": "Carregando...",
+            "processing":     "Processando...",
+            "search":         "Digite o termo de busca:",
+            "zeroRecords":    "Nenhum dado enconttrado",
+            "paginate": {
+                "first":      "Primeira",
+                "last":       "Última",
+                "next":       "Próxima",
+                "previous":   "Anterior"
+            },
+            "aria": {
+                "sortAscending":  ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+            }
+        }
+    } );
+} );

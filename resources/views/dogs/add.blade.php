@@ -24,6 +24,7 @@
                     {{
                         Form::open([
                             'method'    =>  'POST',
+                            'enctype'   =>  "multipart/form-data",
                         ])
                     }}
 
@@ -34,7 +35,8 @@
                             {{
                                 Form::text('name','',[
                                     'class'=>'form-control',
-                                    'placeholder'=>'Nome do cão (obrigatório)'
+                                    'placeholder'=>'Nome do cão (obrigatório)',
+                                    'required',
                                 ])
                             }}
                             
@@ -48,7 +50,8 @@
                             {{
                                 Form::text('cbkc','',[
                                     'class'=>'form-control',
-                                    'placeholder'=>' Número de registro na CBKC (obrigatório)'
+                                    'placeholder'=>' Número de registro na CBKC (obrigatório)',
+                                    'required',
                                 ])
                             }}
                         </div>
@@ -60,7 +63,8 @@
                             {{
                                 Form::text('birthdate','',[
                                     'class'=>'form-control',
-                                    'placeholder'=>'Data de Nascimento do cão (obrigatório)'
+                                    'placeholder'=>'Data de Nascimento do cão (obrigatório)',
+                                    'required',
                                 ])
                             }}
                         </div>
@@ -72,7 +76,8 @@
                             {{
                                 Form::select('gender',['Macho'=>'Macho','Femêa'=>'Femêa'],'',[
                                     'class'=>'form-control',
-                                    'placeholder'=>'Sexo (obrigatório)'
+                                    'placeholder'=>'Sexo (obrigatório)',
+                                    'required',
                                 ])
                             }}
                         </div>
@@ -84,7 +89,8 @@
                             {{
                                 Form::text('fathername','',[
                                     'class'=>'form-control',
-                                    'placeholder'=>' Nome do pai (obrigatório)'
+                                    'placeholder'=>' Nome do pai (obrigatório)',
+                                    'required',
                                 ])
                             }}
                         </div>
@@ -97,7 +103,8 @@
                             {{
                                 Form::text('mothername','',[
                                     'class'=>'form-control',
-                                    'placeholder'=>'Nome da mãe (obrigatório)'
+                                    'placeholder'=>'Nome da mãe (obrigatório)',
+                                    'required',
                                 ])
                             }}
                         </div>
@@ -110,7 +117,8 @@
                             {{
                                 Form::text('ownername','',[
                                     'class'=>'form-control',
-                                    'placeholder'=>' Nome do proprietário (obrigatório)'
+                                    'placeholder'=>' Nome do proprietário (obrigatório)',
+                                    'required',
                                 ])
                             }}
                         </div>
@@ -123,7 +131,8 @@
                             {{
                                 Form::text('ownerphone','',[
                                     'class'=>'form-control',
-                                    'placeholder'=>' Telefone do proprietário (obrigatório)'
+                                    'placeholder'=>' Telefone do proprietário (obrigatório)',
+                                    'required',
                                 ])
                             }}
                         </div>
@@ -136,7 +145,22 @@
                             {{
                                 Form::email('owner-email','',[
                                     'class'=>'form-control',
-                                    'placeholder'=>'Email do proprietário (obrigatório)'
+                                    'placeholder'=>'Email do proprietário (obrigatório)',
+                                    'required',
+                                ])
+                            }}
+                        </div>
+
+                        
+                        <div class='form-group'>
+                            {{
+                                Form::label('certificate','Certificado (obrigatório)')
+                            }}
+                            {{
+                                Form::file('certificate','',[
+                                    'class'=>'form-control',
+                                    'placeholder'=>'Email do proprietário (obrigatório)',
+                                    'required',
                                 ])
                             }}
                         </div>

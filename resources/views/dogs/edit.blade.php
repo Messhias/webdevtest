@@ -23,6 +23,7 @@
                     {{
                         Form::open([
                             'method'    =>  'PUT',
+                            'enctype'   =>  "multipart/form-data",
                         ])
                     }}
 
@@ -139,6 +140,18 @@
                             }}
                             {{
                                 Form::email('owner-email',$dog->owner[ 0 ]->email,[
+                                    'class'=>'form-control',
+                                    'placeholder'=>'Email do proprietário (obrigatório)'
+                                ])
+                            }}
+                        </div>
+                        
+                        <div class='form-group'>
+                            {{
+                                Form::label('certificate','Certificado (se o certificado não se alterou não há necessidade da alteração desse campo)')
+                            }}
+                            {{
+                                Form::file('certificate','',[
                                     'class'=>'form-control',
                                     'placeholder'=>'Email do proprietário (obrigatório)'
                                 ])

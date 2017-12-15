@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get( 'caes','DogController@index' )->name( 'caes' )->middleware( 'auth' );
 Route::get('editar-cao/{dog}','DogController@edit')->name( 'editar-cao' )->middleware( 'auth' );
 Route::get('adicionar-cao','DogController@create')->name( 'adicionar-cao' )->middleware( 'auth' );
+Route::get( 'mostrar-cao/{dog}', 'DogController@show' )->name( 'mostrar-cao' )->middleware( 'auth' );
 
 Route::post('adicionar-cao/','DogController@store')->name( 'adicionar-cao' )->middleware( 'auth' );
 

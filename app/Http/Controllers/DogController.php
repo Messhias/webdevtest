@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Dog;
 use App\Owner;
 use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Support\Facades\Storage;
 
 class DogController extends Controller
 {
@@ -25,7 +27,7 @@ class DogController extends Controller
      */
     public function index(){
         return view('dogs.index',[
-            'dogs'  => $this->dogs->paginate(20)
+            'dogs'  => $this->dogs
         ]);
     }
 
@@ -53,9 +55,10 @@ class DogController extends Controller
             'gender'            =>  'required',
             'fathername'        =>  'required',
             'mothername'        =>  'required',
-            'ownername'          =>  'required',
+            'ownername'         =>  'required',
             'ownerphone'        =>  'required',
             'owner-email'       =>  'required',
+            'certificate'       =>  'required',
         ]);
         
         if ($validator->fails()) return redirect()->back()->withErrors( $validator )->withInput();
@@ -75,6 +78,9 @@ class DogController extends Controller
             $this->dogs->cbkc       =   $request->input( 'cbkc' );
             $this->dogs->birthdate  =   date( 'Y-m-d', strtotime( $request->input( 'birthdate' ) ) );
             $this->dogs->gender     =   $request->input( 'gender' );
+            $path = Storage::putFile('public/certificate/' . $request->input( 'cbkc' ), $request->file('certificate'));
+            
+            $this->dogs->certificate_file = str_replace('public/','',$path);
 
             if( $this->dogs->save() ) return redirect()->route( 'caes' )->with( 'AddMessage', 'Adicionado com sucesso!' );
             else return redirect()->route( 'caes' )->with( 'ErrorMessage', 'Ocorreu um erro ao adicionar' );
@@ -89,9 +95,11 @@ class DogController extends Controller
      * @param  \App\Dog  $dog
      * @return \Illuminate\Http\Response
      */
-    public function show(Dog $dog)
-    {
-        //
+    public function show(Dog $dog){
+
+        return view( 'dogs.show',[
+            'dog'   =>  $dog,
+        ]);
     }
 
     /**
@@ -130,6 +138,16 @@ class DogController extends Controller
             $dog->birthdate  =   date( 'Y-m-d', strtotime( $request->input( 'birthdate' ) ) );
             $dog->gender     =   $request->input( 'gender' );
 
+            if( !empty( $request->file( 'certificate' ) ) or $request->file( 'certificate' ) != null ){
+
+                Storage::delete( $dog->certificate_file );
+                
+                $path = Storage::putFile('certificate/' . $request->input( 'cbkc' ), $request->file('certificate'));
+    
+                $dog->certificate_file = $path;
+
+            }
+            
             if( $dog->save() ) return redirect()->route( 'caes' )->with( 'AddMessage', 'Editado com sucesso!' );
             else return redirect()->route( 'caes' )->with( 'ErrorMessage', 'Ocorreu um erro ao editar' );
 
