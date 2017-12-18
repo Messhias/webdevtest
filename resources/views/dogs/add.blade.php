@@ -29,9 +29,7 @@
                     }}
 
                         <div class='form-group'>
-                            {{
-                                Form::label('name',' Nome do cão (obrigatório)')
-                            }}
+                            <label for='name'>Nome do cão</label>
                             <input 
                                 type='text' 
                                 name='name' 
