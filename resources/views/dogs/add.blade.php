@@ -32,13 +32,13 @@
                             {{
                                 Form::label('name',' Nome do cão (obrigatório)')
                             }}
-                            {{
-                                Form::text('name','',[
-                                    'class'=>'form-control',
-                                    'placeholder'=>'Nome do cão (obrigatório)',
-                                    'required',
-                                ])
-                            }}
+                            <input 
+                                type='text' 
+                                name='name' 
+                                id='name' 
+                                placeholder='Nome do cão (obrigatório)' 
+                                required
+                            />
                             
                         </div>
 
