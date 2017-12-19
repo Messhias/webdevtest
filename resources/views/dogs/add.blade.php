@@ -156,7 +156,7 @@
                                 Form::label('certificate','Certificado (obrigatório)')
                             }}
                             {{
-                                Form::file('certificate','',[
+                                Form::file('certificate',[
                                     'class'=>'form-control',
                                     'placeholder'=>'Email do proprietário (obrigatório)',
                                     'required',
