@@ -35,6 +35,7 @@
                                 name='name' 
                                 id='name' 
                                 placeholder='Nome do cão (obrigatório)' 
+                                class='form-control'
                                 required
                             />
                             
