@@ -49,7 +49,6 @@ class DogController extends Controller
     public function store(Request $request){
          
         $validator = Validator::make( $request->all(), [
-            'name'              =>  'required',
             'cbkc'              =>  'required|unique:dogs',
             'birthdate'         =>  'required',
             'gender'            =>  'required',
