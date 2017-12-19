@@ -53,7 +53,7 @@
                         <tbody>
                             @if ($dogs->count() < 1 )
                                 <tr>
-                                    <td colspan='3'>
+                                    <td colspan='5'>
                                         <center>
                                             NENHUM CÃO ADICIONADO
                                         </center>
