@@ -19,7 +19,7 @@ class DogController extends Controller
         $this->dogs =   new Dog();
         $this->owners =   new Owner();
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +47,7 @@ class DogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-         
+
         $validator = Validator::make( $request->all(), [
             'cbkc'              =>  'required|unique:dogs',
             'birthdate'         =>  'required',
@@ -59,14 +59,14 @@ class DogController extends Controller
             'owner-email'       =>  'required',
             'certificate'       =>  'required',
         ]);
-        
+
         if ($validator->fails()) return redirect()->back()->withErrors( $validator )->withInput();
 
 
         $this->owners->name         =   $request->input( 'ownername' );
         $this->owners->main_phone   =   $request->input( 'ownerphone' );
         $this->owners->email        =   $request->input( 'owner-email');
-        
+
 
         if( $this->owners->save() ){
 
@@ -78,14 +78,14 @@ class DogController extends Controller
             $this->dogs->birthdate  =   date( 'Y-m-d', strtotime( $request->input( 'birthdate' ) ) );
             $this->dogs->gender     =   $request->input( 'gender' );
             $path = Storage::putFile('public/certificate/' . $request->input( 'cbkc' ), $request->file('certificate'));
-            
+
             $this->dogs->certificate_file = str_replace('public/','',$path);
 
             if( $this->dogs->save() ) return redirect()->route( 'caes' )->with( 'AddMessage', 'Adicionado com sucesso!' );
             else return redirect()->route( 'caes' )->with( 'ErrorMessage', 'Ocorreu um erro ao adicionar' );
 
         }else return redirect()->route( 'caes' )->with( 'ErrorMessage', 'Ocorreu um erro ao adicionar' );
-        
+
     }
 
     /**
@@ -108,7 +108,7 @@ class DogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Dog $dog){
-        
+
         return view( 'dogs.edit',[
             'dog'  =>  $dog->get()[0],
         ]);
@@ -129,7 +129,7 @@ class DogController extends Controller
 
         if( $this->owners->save() ){
 
-            $dog->owners_id  =   $this->owner->id;   
+            $dog->owners_id  =   $this->owner->id;
             $dog->name       =   $request->input( 'name' );
             $dog->fathername =   $request->input( 'fathername' );
             $dog->mothername =   $request->input( 'mothername' );
@@ -140,13 +140,13 @@ class DogController extends Controller
             if( !empty( $request->file( 'certificate' ) ) or $request->file( 'certificate' ) != null ){
 
                 Storage::delete( $dog->certificate_file );
-                
+
                 $path = Storage::putFile('certificate/' . $request->input( 'cbkc' ), $request->file('certificate'));
-    
+
                 $dog->certificate_file = $path;
 
             }
-            
+
             if( $dog->save() ) return redirect()->route( 'caes' )->with( 'AddMessage', 'Editado com sucesso!' );
             else return redirect()->route( 'caes' )->with( 'ErrorMessage', 'Ocorreu um erro ao editar' );
 
@@ -173,6 +173,6 @@ class DogController extends Controller
             if( $dog->delete() ) return redirect()->route( 'caes' )->with( 'ErrorMessage', 'Deletado com sucesso' );
             else return redirect()->route( 'caes' )->with( 'ErrorMessage', 'Ocorreu um erro ao deletar' );
         }
-        
+
     }
 }

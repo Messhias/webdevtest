@@ -40,7 +40,9 @@
                                 placeholder='Nome do cão (obrigatório)'
                                 class='form-control'
                                 required
+                                value="{{ $dog->name }}"
                             />
+
                         </div>
 
                         <div class='form-group'>
