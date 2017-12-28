@@ -9,7 +9,7 @@
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
-                        <strong> A operação não foi efetuada devido aos 
+                        <strong> A operação não foi efetuada devido aos
                         seguintes erros:</strong>
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -30,19 +30,18 @@
 
                         <div class='form-group'>
                             <label for='name'>Nome do cão</label>
-                            <input 
-                                type='text' 
-                                name='name' 
-                                id='name' 
-                                placeholder='Nome do cão (obrigatório)' 
+                            <input
+                                type='text'
+                                name='name'
+                                id='name'
+                                placeholder='Nome do cão (obrigatório)'
                                 class='form-control'
                                 required
-                            />
-                            
+                            />                            
                         </div>
 
                         <div class='form-group'>
-                        
+
                             {{
                                 Form::label('cbkc',' Número de registro na CBKC (obrigatório)')
                             }}
@@ -94,7 +93,7 @@
                             }}
                         </div>
 
-                        
+
                         <div class='form-group'>
                             {{
                                 Form::label('mothername','Nome da mãe (obrigatório)')
@@ -108,7 +107,7 @@
                             }}
                         </div>
 
-                        
+
                         <div class='form-group'>
                             {{
                                 Form::label('ownername',' Nome do proprietário (obrigatório)')
@@ -122,7 +121,7 @@
                             }}
                         </div>
 
-                        
+
                         <div class='form-group'>
                             {{
                                 Form::label('ownerphone',' Telefone do proprietário (obrigatório)')
@@ -136,7 +135,7 @@
                             }}
                         </div>
 
-                        
+
                         <div class='form-group'>
                             {{
                                 Form::label('owner-email','Email do proprietário (obrigatório)')
@@ -150,7 +149,7 @@
                             }}
                         </div>
 
-                        
+
                         <div class='form-group'>
                             {{
                                 Form::label('certificate','Certificado (obrigatório)')
@@ -164,7 +163,7 @@
                             }}
                         </div>
 
-                        
+
                         <div class='form-group'>
                             {{
                                 Form::submit('Cadastrar cão',[
@@ -179,7 +178,7 @@
                     {{
                         Form::close()
                     }}
-                
+
                 </div>
             </div>
         </div>
